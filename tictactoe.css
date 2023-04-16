@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Quicksand";
+  color: var(--light-text-color);
+}
+:root {
+  --clean-border-color: rgb(207, 207, 207);
+  --light-text-color: rgb(188, 191, 193);
+  --dark-text-color: rgb(123, 123, 123);
+  --primary-color: rgb(18, 189, 172);
+  --secondary-color: rgb(11, 161, 146);
+  --x-color: rgb(84, 84, 84);
+  --o-color: rgb(242, 235, 210);
+}
+
+header {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--dark-text-color);
+}
+.appContainer {
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+.scoreBoard {
+  display: flex;
+  margin: 0 15rem 0 15rem;
+  align-items: center;
+  min-height: 2rem;
+  text-align: center;
+  justify-content: space-between;
+}
+.scoreX {
+  display: flex;
+  justify-content: space-between;
+  line-height: 0px;
+  font-size: 2rem;
+  padding: 0 2rem 0 2rem;
+  flex-direction: row;
+  min-width: 10rem;
+  border: 2px solid var(--clean-border-color);
+  border-radius: 5px;
+}
+
+.scoreO {
+  display: flex;
+  justify-content: space-between;
+  line-height: 0px;
+  padding: 0 2rem 0 2rem;
+  font-size: 2rem;
+  flex-direction: row;
+  min-width: 10rem;
+  border: 2px solid var(--clean-border-color);
+  border-radius: 5px;
+}
+.whosTurn {
+  color: var(--dark-text-color);
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.playerX {
+  font-weight: bold;
+  color: var(--x-color);
+}
+.gameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 75vh;
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+.game {
+  height: 85%;
+  width: 40%;
+  display: grid;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  grid-template-areas:
+    "one two three"
+    "eight nine four"
+    "seven six five";
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: (3, auto);
+  cursor: pointer;
+  --stagger-delay: 150ms;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+    filter: hue-rotate(360deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+}
+.x {
+  color: var(--x-color);
+}
+.o {
+  color: var(--o-color);
+}
+
+.card {
+  background-color: var(--primary-color);
+  animation: cardEntrance 700ms ease-out;
+  animation-fill-mode: backwards;
+}
+.centered {
+  display: table-cell;
+  vertical-align: middle;
+}
+.one {
+  grid-area: one;
+  border-right: 5px solid var(--secondary-color);
+  border-bottom: 5px solid var(--secondary-color);
+  animation-delay: calc(1 * var(--stagger-delay));
+  /* max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1; */
+}
+.two {
+  grid-area: two;
+  border-bottom: 5px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
+  animation-delay: calc(2 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.three {
+  grid-area: three;
+  border-bottom: 5px solid var(--secondary-color);
+
+  animation-delay: calc(3 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.four {
+  grid-area: four;
+  border-bottom: 5px solid var(--secondary-color);
+
+  animation-delay: calc(4 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.five {
+  grid-area: five;
+  animation-delay: calc(5 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.six {
+  grid-area: six;
+  border-right: 5px solid var(--secondary-color);
+
+  animation-delay: calc(6 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.seven {
+  border-right: 5px solid var(--secondary-color);
+  grid-area: seven;
+  animation-delay: calc(7 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.eight {
+  border-bottom: 5px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
+  grid-area: eight;
+  animation-delay: calc(8 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.nine {
+  border-bottom: 5px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
+
+  grid-area: nine;
+  animation-delay: calc(9 * var(--stagger-delay));
+  max-height: 12rem;
+  max-width: 12rem;
+  aspect-ratio: 1;
+}
+.restartGame {
+  text-align: center;
+  margin-bottom: -1rem;
+}
+.restartGame button {
+  color: var(--primary-color);
+  background: transparent;
+  padding: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  font-weight: bold;
+  margin: 1rem;
+}
+.restartGame button:hover {
+  cursor: pointer;
+}
