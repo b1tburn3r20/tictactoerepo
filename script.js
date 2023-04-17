@@ -12,9 +12,16 @@ let turn;
 let winner;
 
 /*----- cached elements  -----*/
-const xWins = document.getElementById("scoreXVal")
+const xWins = document.getElementById("scoreXVal");
+const OWins = document.getElementById("scoreOVal")
+const resetBtn = document.getElementById("restartButton");
+const gameBoard = document.getElementById("gameBoard");
+const gridIndices = [...document.querySelectorAll('#gameBoard > div')]
+
 
 /*----- event listeners -----*/
+document.getElementById('gameBoard').addEventListener('click', tileChange)
+resetBtn.addEventListener('click', initialize)
 
 /*----- functions -----*/
 initialize()
