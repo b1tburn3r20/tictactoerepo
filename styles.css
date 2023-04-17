@@ -126,9 +126,9 @@ header {
   border-right: 5px solid var(--secondary-color);
   border-bottom: 5px solid var(--secondary-color);
   animation-delay: calc(1 * var(--stagger-delay));
-  /* max-height: 12rem;
+  max-height: 12rem;
   max-width: 12rem;
-  aspect-ratio: 1; */
+  aspect-ratio: 1;
 }
 .two {
   grid-area: two;
