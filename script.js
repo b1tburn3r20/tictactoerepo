@@ -2,7 +2,7 @@
 const SHAPES = {
     '0': 'null',
     '1': 'X',
-    '2': 'Y'
+    '-1': 'O'
 
 }
 
@@ -36,6 +36,24 @@ function initialize() {
         winner = null;
         render()
     }
+
+function handleTile(evt) {
+    const colIdx = gridIndices.indexOf(evt.target);
+    //Guards...
+    if (colIdx === -1) return;
+    // shortcut to the column array?
+    const colArray = board[colIdx]
+    //find index of the first 0 in colArray
+    const rowIdx = collArr.indexOf(0)
+    // update the board state with the current player value
+    colArr[rowIdx] = turn;
+    //switch turn player
+    turn *= -1;
+
+}
+
+
+
 function render() {
     board.forEach(function(rowArr, rowIdx) {
         //iterates over the cells in rows
