@@ -8,31 +8,75 @@
 
 
 
-
-
-
-
 /*----- constants -----*/
 const PLAYERS = {
-    '1': {
-        name: 'Player 1',
-        symbol: 'X'
-    },
-    '-1': {
-        name: 'Player 2',
-        symbol: 'O'
-    }
+  '1': {
+    name: 'Player 1',
+    symbol: 'X'
+  },
+  '-1': {
+    name: 'Player 2',
+    symbol: 'O'
+  }
 }
-/*----- cached elements  -----*/
 
-
+/*----- cached elements -----*/
+const gameBoard = document.getElementById('gameBoard')
+const xScore = document.getElementById('scoreXWins')
+const oScore = document.getElementById('scoreOWins')
+const whosTurn = document.getElementsByClassName('whosTurn')
+const currentTurn = document.getElementById('currentTurn')
+const restartBtn = document.getElementById('restartButton')
 
 /*----- state variables -----*/
-
-
-
-
-/*----- event listeners -----*/
-
+let board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+let turn = 1
+let playedSquares = []
 
 /*----- functions -----*/
+function render() {
+  board.forEach((square, idx) => {
+    if (square === 1) {
+      document.getElementById(idx).innerText = 'x'
+    } else if (square === -1) {
+      document.getElementById(idx).innerText = 'o'
+    } else {
+      document.getElementById(idx).innerText = ''
+    }
+  })
+}
+
+function handleSquareClick(evt) {
+  const square = evt.target
+  const idx = square.id
+
+  if (board[idx] !== 0 || playedSquares.includes(idx)) {
+    // Square has already been played, do nothing
+    return
+  }
+
+  // Mark the square with the current player's symbol
+  board[idx] = turn
+
+  // Add the square to the played squares list
+  playedSquares.push(idx)
+
+  // Switch to the other player's turn
+  turn *= -1
+
+  render()
+}
+
+function handleRestartClick() {
+  // Reset the game state
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+  turn = 1
+  playedSquares = []
+  render()
+}
+
+/*----- event listeners -----*/
+gameBoard.addEventListener('click', handleSquareClick)
+restartBtn.addEventListener('click', handleRestartClick)
+
+render()

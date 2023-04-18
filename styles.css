@@ -24,6 +24,7 @@ header {
   width: auto;
   height: auto;
 }
+
 .scoreBoard {
   display: flex;
   margin: 0 15rem 0 15rem;
@@ -85,8 +86,8 @@ header {
   column-gap: 0.5rem;
   grid-template-areas:
     "one two three"
-    "eight nine four"
-    "seven six five";
+    "four five six"
+    "seven eight nine";
   grid-template-rows: repeat(3, auto);
   grid-template-columns: (3, auto);
   cursor: pointer;
@@ -151,6 +152,7 @@ header {
 .four {
   grid-area: four;
   border-bottom: 5px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
 
   animation-delay: calc(4 * var(--stagger-delay));
   max-height: 12rem;
@@ -163,11 +165,12 @@ header {
   max-height: 12rem;
   max-width: 12rem;
   aspect-ratio: 1;
+  border-bottom: 5px solid var(--secondary-color);
+  border-right: 5px solid var(--secondary-color);
 }
 .six {
   grid-area: six;
-  border-right: 5px solid var(--secondary-color);
-
+  border-bottom: 5px solid var(--secondary-color);
   animation-delay: calc(6 * var(--stagger-delay));
   max-height: 12rem;
   max-width: 12rem;
@@ -182,7 +185,6 @@ header {
   aspect-ratio: 1;
 }
 .eight {
-  border-bottom: 5px solid var(--secondary-color);
   border-right: 5px solid var(--secondary-color);
   grid-area: eight;
   animation-delay: calc(8 * var(--stagger-delay));
@@ -191,9 +193,6 @@ header {
   aspect-ratio: 1;
 }
 .nine {
-  border-bottom: 5px solid var(--secondary-color);
-  border-right: 5px solid var(--secondary-color);
-
   grid-area: nine;
   animation-delay: calc(9 * var(--stagger-delay));
   max-height: 12rem;
@@ -215,4 +214,45 @@ header {
 }
 .restartGame button:hover {
   cursor: pointer;
+}
+.animated {
+  animation: rotate 1s infinite;
+}
+
+/* Adjustments for screens with a maximum width of 768 pixels (e.g. tablets and smaller devices) */
+@media only screen and (max-width: 768px) {
+  /* Adjust the layout of the score board */
+  .scoreBoard {
+    margin: 0 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .scoreX,
+  .scoreO {
+    margin-bottom: 1rem;
+    min-width: auto;
+    border: none;
+    text-align: center;
+  }
+  .scoreX p,
+  .scoreO p {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust the layout of the game board */
+  .game {
+    width: 80%;
+    grid-template-areas:
+      "one two three"
+      "four five six"
+      "seven eight nine";
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: (3, auto);
+  }
+
+  /* Adjust the size of the restart button */
+  .restartGame button {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
 }
